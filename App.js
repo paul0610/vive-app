@@ -1,18 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, YellowBox } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import ActivityLogo from './components/ActivityLogo';
+import ActivityPrincipal from './components/ActivityPrincipal';
 
-export default function App() {
+/*export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <ActivityLogo/>
   );
+}*/
+
+export default class App extends Component {
+  render() {
+    return <RootStack />;
+  }
 }
+
+const RootStack = createStackNavigator(
+  {
+      Home: { screen: ActivityLogo },
+      Profile: { screen: ActivityPrincipal },
+  },
+  {
+      initialRouteName: 'Logo',
+  }
+  );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#0000',
     alignItems: 'center',
     justifyContent: 'center',
   },
